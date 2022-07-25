@@ -1,0 +1,55 @@
+﻿
+@model IPagedList<CoreAndFoot.Data.Models.Catagory>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+<br />
+<h2>Katagori Listesi</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+
+<p>
+    <h6 style="float:left;margin-top:10px" class="text-dark">Food name</h6> 
+    <input type="text" name="p"  class="form-control" style=" width: 150px;float:left;margin-bottom:15px;margin-left:5px"/>
+    
+    <input type="submit" value="Ara" class="btn btn-info" style="        float: left;margin-left:10px;      margin-bottom: 15px"/>
+
+
+</p>
+
+}
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Katagori adı</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CatagoryID</td>
+            <td>@item.CatagoryName</td>
+            <td>@item.Status</td>
+            <td><a href="/Catagory/KatagoriSil/@item.CatagoryID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Catagory/KatagoriGetir/@item.CatagoryID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+                                                                          LiElementClasses = new string[] { "page-item" },
+                                                                          PageClasses = new string[] { "page-link" },
+                                                                          Display = PagedListDisplayMode.IfNeeded
+})
+<br />
+<a href="/Catagory/KatagoriEkle" class="btn btn-primary">Yeni Katagori Ekle</a>

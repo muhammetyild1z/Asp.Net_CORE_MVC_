@@ -1,0 +1,23 @@
+﻿@model CoreAndFoot.Data.Models.Catagory
+@{
+    ViewData["Title"] = "KatagoriGetir";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+
+<h1>Katagori Güncelle</h1>
+<br />
+<form action="/Catagory/KatagoriGuncelle/@Model.CatagoryID" method="post">
+    <strong>Katagori Ad</strong>
+    @Html.TextBoxFor(x => x.CatagoryName, new { @class = "form-control" })
+    <br />
+    <strong>Katagori Açıklama</strong>
+    <br />
+    @Html.TextAreaFor(x => x.CatagoryDesc, new { @class = "form-control" })
+    <br />
+    <strong>Durum</strong>
+    @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">
+        Güncelle
+    </button>
+</form>

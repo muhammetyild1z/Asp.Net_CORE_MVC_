@@ -1,0 +1,38 @@
+﻿@model CoreAndFoot.Data.Models.UrunEkle
+
+
+    @{
+        ViewData["Title"] = "FoodEkle";
+        Layout = "~/Views/Shared/_Layout_1.cshtml";
+    }
+
+    <h1>Ürün Ekle</h1>
+                                                                            @*resim boş dönmesin enctype*@
+<form  asp-controller="Food" asp-action="FoodEkle" method="post" enctype="multipart/form-data">
+   
+    <br />
+    <strong>Ürün Adı</strong>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <strong>Fiyatı</strong>
+    @Html.TextBoxFor(x => x.price, new { @class = "form-control" })
+    <br />
+    <strong>Stok</strong>
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    <strong>Açıklama</strong>
+    @Html.TextAreaFor(x => x.ShortDesc, new { @class = "form-control" })
+    <br />
+    <strong>Resim seçin</strong>
+    <input type="file" name="ImageUrl" />
+    <br />
+    <strong>Katagori</strong>
+    @Html.DropDownListFor(x => x.CatagoryID, (List<SelectListItem>)ViewBag.dgrr, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-primary">
+        Ürün Ekle
+    </button>
+
+</form>
+

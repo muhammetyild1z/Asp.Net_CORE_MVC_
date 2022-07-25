@@ -1,0 +1,27 @@
+﻿@model CoreAndFoot.Data.Models.Catagory
+@{
+    ViewData["Title"] = "KatagoriEkle";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+
+<h1>Katagori Ekle</h1>
+
+<br />
+@using (Html.BeginForm("KatagoriEkle", "Catagory", FormMethod.Post))
+{
+
+    <strong>Katagori Adı</strong>
+    @Html.TextBoxFor(x => x.CatagoryName, new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(x => x.CatagoryName, "", new { @style = "color:white;  background-color:red; border-radius:3px; " })
+    <br />
+    <strong>Katagori Açıklaması</strong>
+    @Html.TextBoxFor(x => x.CatagoryDesc, new { @class = "form-control" })
+    <br />
+    @*@Html.ValidationMessageFor(x => x.CatagoryDesc, "", new { @style = "color:red " })*@
+    <button class="btn btn-info">
+        Ekle
+    </button>
+
+
+}

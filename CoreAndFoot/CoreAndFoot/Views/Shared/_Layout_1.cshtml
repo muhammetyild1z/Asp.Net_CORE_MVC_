@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CoreAndFoot</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Core And Food</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-nav ml-auto" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Catagory/Index">Katagori <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Food/Index">Ürünler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Chart/Pie_Chart">Google Pie Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Chart/Column_Chart">Google Colmn Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Chart/Statistics">İstatistikler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Popup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Statics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ayarlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Login/LogOut">Çıkış</a>
+                </li>
+            </ul>
+           
+        </div>
+    </nav>
+    <div class="container">
+        
+            @RenderBody()
+
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

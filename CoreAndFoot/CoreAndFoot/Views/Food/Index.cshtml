@@ -1,0 +1,49 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@*Önemli*@
+@model IPagedList<CoreAndFoot.Data.Models.Food>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+ <br />
+<h2>Ürün Listesi</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Ad</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>Katagori adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FoodID</td>
+            <td>@item.Name</td>
+            <td>@item.price</td>
+            <td>@item.Stock</td>
+            <td>@item.Catagory.CatagoryName</td>
+            <td><a href="/Food/FoodSil/@item.FoodID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Food/FoodGetir/@item.FoodID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Food/FoodDetay/@item.FoodID" class="btn btn-info">Detay</a></td>
+
+        </tr>
+
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page   }), new PagedListRenderOptions {
+                                                                          LiElementClasses = new string[] { "page-item" },
+                                                                          PageClasses = new string[] { "page-link" },
+                                                                          Display = PagedListDisplayMode.IfNeeded
+})
+<br />
+<a href="/Food/FoodEkle" class="btn btn-primary">Yeni Ürün Ekle</a>
+

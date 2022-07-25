@@ -1,0 +1,42 @@
+﻿@model CoreAndFoot.Data.Models.Food
+@{
+    ViewData["Title"] = "FoodGetir";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+<br />
+<h1>Ürün Güncelle</h1>
+
+
+<form action="/Food/FoodGuncelle/@Model.FoodID" method="post" enctype="multipart/form-data">
+    <strong>Ürün ID</strong>
+    @Html.TextBoxFor(x => x.FoodID, new { @class = "form-control",@disabled = "disabled" })
+    <br />
+    <strong>Ürün Adı</strong>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <strong>Fiyatı</strong>
+    @Html.TextBoxFor(x => x.price, new { @class = "form-control" })
+    <br />
+    <strong>Stok</strong>
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    <strong>Açıklama</strong>
+    @Html.TextAreaFor(x => x.ShortDesc, new { @class = "form-control" })
+    <br />
+    <strong>Resim Seç</strong>
+    <br />
+    <input type="file" name="ImageUrl" />
+    <br />    <br />
+    <strong>Resim Değiştir</strong>
+    <input type="checkbox" class="form-check-input" data-val="true" id="check" name="check" value="true" style="margin-left:30px; margin-top:8px" />
+    <br />
+    <br />
+    <strong>Katagori</strong>
+    @Html.DropDownListFor(x => x.CatagoryID, (List<SelectListItem>)ViewBag.foods, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">
+        Ürün Güncelle
+    </button>
+
+</form>
+
